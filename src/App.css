@@ -1,0 +1,466 @@
+/* App.css */
+
+/* App.css */
+
+/* Basic Layout */
+
+
+/* Grid View */
+/* App.css */
+
+/* General Styles for the Table */
+.employee-grid {
+  width: 97%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  perspective: 1500px; /* Set perspective for 3D effects */
+}
+
+/* Table Styling */
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out;
+}
+
+.grid-table:hover {
+  transform: rotateY(10deg); /* Slight rotation on hover for 3D effect */
+}
+
+.grid-table th,
+.grid-table td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #f4f4f4;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Header Styling */
+.grid-table th {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Row Hover Effect */
+.grid-table tr:hover {
+  background-color: #f7f7f7;
+  transform: scale(1.02); /* Slight scale effect when hovering over rows */
+}
+
+/* 3D Row Hover Effect */
+.grid-row {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-row:hover {
+  transform: translateZ(15px); /* 3D hover effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Elevation effect */
+}
+
+/* Odd Row Color */
+.grid-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Styling the Table Borders and Cell Borders */
+.grid-table td {
+  border-top: 1px solid #e0e0e0;
+}
+
+.grid-table th,
+.grid-table td {
+  border-left: 1px solid #e0e0e0;
+}
+
+.grid-table th:first-child,
+.grid-table td:first-child {
+  border-left: none;
+}
+
+/* Adding Animation to Table Rows */
+.grid-row {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Fade-in Animation for Rows */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Medium Screens: Adjust Font Sizes */
+@media (max-width: 1024px) {
+  .employee-grid {
+    padding: 10px;
+  }
+
+  .grid-table th,
+  .grid-table td {
+    font-size: 14px; /* Smaller font size for better fitting */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .grid-table th {
+    font-size: 16px;
+  }
+}
+
+/* Small Screens: Enable Horizontal Scrolling */
+@media (max-width: 768px) {
+  .grid-table {
+    width: 100%; /* Full width of the container */
+    display: block; /* Change table to block for scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .grid-table th,
+  .grid-table td {
+    white-space: nowrap; /* Prevent wrapping of text */
+    font-size: 12px; /* Further reduce font size */
+  }
+}
+
+/* Extra Small Screens: Collapse Non-Essential Columns */
+@media (max-width: 576px) {
+  .grid-table th:nth-child(3), /* Example: Hide the 3rd column */
+  .grid-table td:nth-child(3) {
+    display: none;
+  }
+
+  .grid-table th,
+  .grid-table td {
+    font-size: 10px; /* Smallest readable font size */
+    padding: 8px;
+  }
+}
+
+
+
+
+
+/* Tile View */
+/* Container for the employee tiles */
+.employee-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Styling for each individual tile */
+.employee-tile {
+  width: 250px;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+}
+/* Flag Icon (Blue Star) Styling */
+.flag-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: blue;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Add hover effect to scale and rotate tile */
+.employee-tile:hover {
+  transform: rotateY(10deg) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Create a slight 3D rotation effect */
+.employee-tile:hover .tile-content {
+  transform: translateZ(20px);
+  animation: contentAnimation 0.6s ease forwards;
+}
+
+/* Hover animation for the content inside the tile */
+@keyframes contentAnimation {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translateZ(30px);
+  }
+}
+
+/* Add some depth with 3D shadow and light when hovering */
+.employee-tile:hover .tile-content {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the title and text inside the tile */
+.employee-tile h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.employee-tile p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+/* Action buttons styling */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.actions button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Action buttons: edit, flag, delete */
+.actions button:nth-child(2) {
+  background-color: #ffcc00;
+}
+
+.actions button:nth-child(3) {
+  background-color: #dc3545;
+}
+
+.actions button:nth-child(2):hover {
+  background-color: #e0a800;
+}
+
+.actions button:nth-child(3):hover {
+  background-color: #c82333;
+}
+
+/* Optional: Add a subtle pulse effect on hover for the tile */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.employee-tile:hover {
+  animation: pulse 1s ease infinite;
+}
+
+
+
+
+
+
+
+/* Modal */
+/* Modal Overlay (Background dimming) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInOverlay 0.5s ease;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  animation: modalIn 0.5s ease forwards;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: left;
+}
+
+/* Modal Fade In Animation */
+@keyframes fadeInOverlay {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Modal Content In Animation (3D scale) */
+@keyframes modalIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Title Styling */
+.modal-content h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Employee Info Paragraph */
+.modal-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  animation: fadeInText 0.7s ease-out forwards;
+}
+
+/* Slide Up Animation for Title */
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade In Animation for Paragraphs */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+.toggle-view-btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(45deg, #ff6f61, #d500f9);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px; /* Enable 3D transformations */
+}
+
+/* .toggle-view-btn::after {
+  content: "➔"; 
+  display: inline-block;
+  color: linear-gradient(45deg, #ff6f61, #d500f9);
+  margin-left: 10px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  border-radius: 50%;
+} */
+
+.toggle-view-btn:hover {
+  transform: scale(1.1) translateY(-3px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, #d500f9, #ff6f61);
+}
+
+.toggle-view-btn:hover::after {
+  transform: translateX(5px); /* Slight forward movement of the arrow */
+}
+
+.toggle-view-btn:active {
+  transform: scale(0.9) translateY(0) rotateX(-5deg) rotateY(-5deg);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-view-btn::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 12px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.toggle-view-btn:hover::before {
+  opacity: 1;
+}
+
+
+
+
+
+

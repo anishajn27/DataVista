@@ -1,0 +1,179 @@
+/* General Reset */
+/* General Styling */
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(45deg, #C2E9FB, #A1C4FD, #C7E9B0, #E4FFFE, #F7C4A3);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 30px;
+    background: linear-gradient(45deg, #4B0082, #800080, #2E2A47, #1F1D56, #A2A7D3);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    perspective: 1500px; /* Add perspective for 3D effects */
+  }
+  
+  .navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-logo:hover {
+    transform: rotateY(15deg); /* 3D effect on hover */
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+  }
+  
+  .hamburger .line {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+    transform: rotateX(0deg); /* Apply 3D rotation */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for the menu */
+  }
+  
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    padding: 10px 20px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Add smooth color and transform effect */
+  }
+  
+  .menu a:hover {
+    color: #ffeb3b;
+    transform: translateY(-5px); /* 3D hover effect */
+  }
+  
+  .submenu-container {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, .25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, .37);
+    backdrop-filter: blur(8px);
+    border-radius: 13px;
+    list-style-type: none;
+    transform: translateY(-100%) scaleY(0); /* Initial hidden state */
+    transform-origin: top; /* Ensure the animation starts from the top edge */
+    opacity: 0;
+    pointer-events: none; /* Prevent interactions when hidden */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .submenu li {
+    margin: 0;
+  }
+  
+  .submenu li a {
+    color: #000000;
+    padding: 10px 20px;
+    display: block;
+    font-size: 16px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .submenu li a:hover {
+    color: #ffeb3b;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  /* Show submenu when hovering over the container */
+  .submenu-container:hover .submenu {
+    display: block;
+    transform: perspective(500px) rotateX(0deg); /* Reverse the 3D rotation */
+    opacity: 1;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+  
+    .menu {
+      flex-direction: column;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100vh;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 40px;
+      transform: translateX(100%);
+      background: linear-gradient(45deg, #4B0082, #800080, #2E2A47, #1F1D56, #A2A7D3);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, .37);
+      backdrop-filter: blur(4px);
+      border-radius: 13px;
+    }
+  
+    .menu.open {
+      transform: translateX(0);
+    }
+  
+    .submenu {
+      position: static;
+      background: none;
+      box-shadow: none;
+    }
+  
+    .submenu li a {
+      position: relative;
+      padding: 10px 0;
+      color: #A1C4FD;
+    }
+    .submenu-container {
+      width: 100%; /* Match parent container */
+      text-align: center;
+    }
+  
+    .submenu-container:hover .submenu {
+      display: block;
+      opacity: 1;
+      transform: rotateX(0deg); /* Apply 3D rotation */
+    }
+  }
+  
+
