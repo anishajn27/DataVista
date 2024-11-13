@@ -9,9 +9,20 @@
 /* App.css */
 
 /* General Styles for the Table */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100vw; /* Ensure body takes up the full viewport width */
+  height: 100vh; /* Fix body height to viewport height */
+  box-sizing: border-box;
+  align-items: center;
+  font-family: Arial, sans-serif; /* Optional for consistency */
+  background: linear-gradient(45deg, #C2E9FB, #A1C4FD, #C7E9B0, #E4FFFE, #F7C4A3);
+}
 .employee-grid {
-  width: 97%;
-  padding: 20px;
+  width: 100%;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,53 +119,75 @@
   }
 }
 
-/* RESPONSIVE DESIGN */
+/* Responsive Design */
+/* @media (max-width: 1024px) {
+  .employee-grid {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .grid-table {
+    width: 100%;
+    overflow-x: auto;
+    transform: none;
+  }
+
+  .grid-table th, .grid-table td {
+    font-size: 14px;
+  }
+
+  .grid-table th {
+    font-size: 16px;
+  }
+} */
+
 
 /* Medium Screens: Adjust Font Sizes */
-@media (max-width: 1024px) {
+/* @media (max-width: 1080px) {
   .employee-grid {
     padding: 10px;
   }
 
   .grid-table th,
   .grid-table td {
-    font-size: 14px; /* Smaller font size for better fitting */
-    padding: 10px; /* Reduce padding for smaller screens */
+    font-size: 18px;
+    padding: 10px; 
+    overflow-x: auto;
   }
-
-  .grid-table th {
-    font-size: 16px;
-  }
-}
+} */
 
 /* Small Screens: Enable Horizontal Scrolling */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .grid-table {
     width: 100%; /* Full width of the container */
     display: block; /* Change table to block for scrolling */
     overflow-x: auto; /* Enable horizontal scrolling */
+    box-sizing: border-box;
+    margin-top: 15px;
   }
 
   .grid-table th,
   .grid-table td {
     white-space: nowrap; /* Prevent wrapping of text */
-    font-size: 12px; /* Further reduce font size */
+    font-size: 18px; /* Further reduce font size */
+    gap: 10px;
   }
 }
 
 /* Extra Small Screens: Collapse Non-Essential Columns */
-@media (max-width: 576px) {
-  .grid-table th:nth-child(3), /* Example: Hide the 3rd column */
+/* @media (max-width: 576px) {
+  .grid-table th:nth-child(3),
   .grid-table td:nth-child(3) {
     display: none;
   }
 
   .grid-table th,
   .grid-table td {
-    font-size: 10px; /* Smallest readable font size */
+    font-size: 18px;
     padding: 8px;
+    gap: 10px;
   }
-}
+} */
 
 
 
@@ -183,15 +216,6 @@
   position: relative;
   perspective: 1000px;
   overflow: hidden;
-}
-/* Flag Icon (Blue Star) Styling */
-.flag-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: blue;
-  font-size: 24px;
-  font-weight: bold;
 }
 
 /* Add hover effect to scale and rotate tile */
@@ -292,6 +316,30 @@
   animation: pulse 1s ease infinite;
 }
 
+@media (max-width: 1024px) {
+  .employee-tile {
+    width: 200px; /* Further reduce tile width for smaller screens */
+    padding: 15px;
+  }
+
+  .employee-tiles {
+    gap: 30px; /* Reduce gap between tiles */
+  }
+
+  .employee-tile h3 {
+    font-size: 16px;
+  }
+
+  .employee-tile p {
+    font-size: 13px;
+  }
+
+  .actions button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
 
 
 
@@ -328,6 +376,23 @@
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .modal-content {
+    width: 80%; /* Adjust width for medium screens */
+    padding: 20px;
+    text-align: center; /* Center text for smaller screens */
+  }
+
+  .modal-content h2 {
+    font-size: 20px; /* Adjust title font size */
+  }
+
+  .modal-content p {
+    font-size: 14px; /* Adjust paragraph font size */
+    line-height: 1.5;
+  }
 }
 
 /* Modal Fade In Animation */

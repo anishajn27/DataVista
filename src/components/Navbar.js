@@ -18,6 +18,9 @@ export default function Navbar() {
       </button>
       <ul className={`menu ${isMenuOpen ? "open" : ""}`}>
         <li>
+          <a href="#">     </a>
+        </li>
+        <li>
           <a href="#home">Home</a>
         </li>
         <li className="submenu-container">
