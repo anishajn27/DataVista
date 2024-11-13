@@ -138,6 +138,7 @@
       align-items: center;
       gap: 40px;
       margin-top: 0;
+      padding-top: 40px;
       transform: translateX(100%);
       background: linear-gradient(45deg, #4B0082, #800080, #2E2A47, #1F1D56, #A2A7D3);
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, .37);
